@@ -27,9 +27,7 @@ public partial class BookStoreDbContext : DbContext
 
             entity.Property(e => e.Bio).HasMaxLength(250);
             entity.Property(e => e.FirstName).HasMaxLength(50);
-            entity.Property(e => e.LastName)
-                .HasMaxLength(50)
-                .HasColumnName("LastNAme");
+            entity.Property(e => e.LastName).HasMaxLength(50);                
         });
 
         modelBuilder.Entity<Book>(entity =>
