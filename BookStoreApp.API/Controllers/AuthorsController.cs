@@ -64,13 +64,13 @@ namespace BookStoreApp.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error performing GET in {nameof(GetAuthors)}");
+                _logger.LogError(ex, $"Error performing GET in {nameof(GetAuthor)}");
                 return StatusCode(500, Messages.Error500Message);
             }
 
         }
 
-        // PUT: api/Authors/5
+        // PUT: api/Authors/5  *** PUT = update record ***
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAuthor(int id, AuthorUpdateDto authorDto)
@@ -123,7 +123,7 @@ namespace BookStoreApp.API.Controllers
                 await _context.Authors.AddAsync(author);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction(nameof(GetAuthor), new { id = author.Id }, author);
+                return CreatedAtAction(nameof(PostAuthor), new { id = author.Id }, author);
             }
             catch (Exception ex)
             {
